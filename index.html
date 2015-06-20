@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>image auto scroller demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- memanggil fle css -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- plugin jquery -->
+	<link rel="stylesheet" href="jquery.mThumbnailScroller.css">
+	
+	<!-- css -->
+	<style>
+		.content{
+			overflow: hidden;
+			height: 114px;
+			position: relative;
+			padding: 10px;
+			background: #333;
+			margin: 10px auto;
+			width: 85%;
+		}
+		.content li{ margin: 0 4px; }
+		.content li a{
+			display: block;
+			border: 7px solid rgba(255,255,255,.1);
+		}
+	</style>
+	
+</head>
+
+<body>
+	<header>
+		<h1><a href="http://firman.salatigadev.com/membuat-image-auto-scroller-dengan-jquery" class="logo">image auto scroller dengan jquery</a></h1>
+		<hr />
+	</header>
+	
+	<div id="demo">
+		<section id="examples">		
+			<!-- content demo -->
+			<div id="content-1" class="content">
+				<ul>
+					<li><a href="#"><img src="images/img1.jpg" /></a></li>
+					<li><a href="#"><img src="images/img2.jpg" /></a></li>
+					<li><a href="#"><img src="images/img3.jpg" /></a></li>
+					<li><a href="#"><img src="images/img4.jpg" /></a></li>
+					<li><a href="#"><img src="images/img5.jpg" /></a></li>
+					<li><a href="#"><img src="images/img6.jpg" /></a></li>
+					<li><a href="#"><img src="images/img7.jpg" /></a></li>
+					<li><a href="#"><img src="images/img8.jpg" /></a></li>
+					<li><a href="#"><img src="images/img9.jpg" /></a></li>
+					<li><a href="#"><img src="images/img10.jpg" /></a></li>
+					<li><a href="#"><img src="images/img11.jpg" /></a></li>
+					<li><a href="#"><img src="images/img12.jpg" /></a></li>
+					<li><a href="#"><img src="images/img13.jpg" /></a></li>
+					<li><a href="#"><img src="images/img14.jpg" /></a></li>
+					<li><a href="#"><img src="images/img15.jpg" /></a></li>
+					<li><a href="#"><img src="images/img16.jpg" /></a></li>
+					<li><a href="#"><img src="images/img17.jpg" /></a></li>
+					<li><a href="#"><img src="images/img18.jpg" /></a></li>
+				</ul>
+			</div>			
+		</section>
+	</div>
+	
+	<footer>
+		<hr />
+		<p><a href="http://firman.salatigadev.com/membuat-image-auto-scroller-dengan-jquery">Kembali ke artikel</a></p>
+		<p>Demo images by Alex Varanese [http://www.alexvaranese.com/]</p>
+	</footer>
+	
+	<!-- Google CDN jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	
+	<!-- script plugin -->
+	<script src="jquery.mThumbnailScroller.js"></script>
+	
+	<script>
+		(function($){
+			$(window).load(function(){
+				
+				var loopDuration=6000;
+				
+				$("#content-1").mThumbnailScroller({
+					callbacks:{
+						onInit:function(){
+							$("#content-1").mThumbnailScroller("scrollTo","right",{duration:loopDuration/2,easing:"easeInOutSmooth"});
+						},
+						onTotalScroll:function(){
+							if($(this).data("mTS").trigger==="external"){
+								$("#content-1").mThumbnailScroller("scrollTo","left",{duration:loopDuration/2,easing:"easeInOutSmooth"});
+							}
+						}
+					}
+				});
+				
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>
